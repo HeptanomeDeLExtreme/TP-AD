@@ -1,0 +1,22 @@
+Troisième partie : Analyse multicritère
+
+L'évaluation des 8 propositions de gestion de l'atelier sont étudiées dans cette partie à l'aide d'un algorithme mathématique nommé Electre 1. Cet algorithme permet entre autre de choisir le meilleur projet parmis plusieurs autres projets, ce qui est notre objectif dans cette partie : nous souhaitons proposer à notre client la meilleure solution de gestion d'atelier.
+
+Les propositions sont basées sur 4 critères  :
+
+- g1 : le bénéfice
+- g2 : la gestion du stock
+- g3 : l'équilibre commercial
+- g4 : l'utilisation de la machine 4
+
+Nous rappelons que l'évaluation de chaque critère est basée sur une note variant de 0 à 10 (0 représentant la moins bonne note, 10 représentant la meilleure note) et que nous nous sommes appuyés sur la matrice de jugement suivante (remettre le tableau 6 ?).
+
+... matrice de jugement ...
+
+Nous avons décidé dans notre étude de mener deux expériences. La première sera l'étude des différents projets sans aucune pondération des critères analysés. La seconde proposera une étude basée sur la seconde partie de ce projet, la programmation linéaire multicritère, afin d'accorder une pondération plus importantes aux critères qui auront été jugés plus importants. Après une analyse de ces deux expériences, nous en déduirons la meilleure solution à proposer à notre client.
+
+
+
+
+
+ 
