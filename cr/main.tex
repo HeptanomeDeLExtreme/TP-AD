@@ -9,6 +9,10 @@
 \usepackage{eurosym}
 \usepackage[toc,page]{appendix}
 
+%3 lignes suivantes : Remet le compteur de section à 0 à chaque nouvelle partie
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother
 
 \title{Analyse décisionnelle pour l'entreprise FaBrique}
 \author{Heptanôme 4203}
@@ -28,7 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% Partie PROG MONOCRITERE %%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\newpage
 \part{Programmation linéaire monocritère}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,6 +126,8 @@ Après avoir analysé les contraintes relatives au fonctionnement logistique de 
 
 \subsection{Comptable}
 
+\emph{NB : Les calculs plus détaillés de cette section sont disponibles en annexe, page \pageref{annexe}.} \\
+
 L'objectif principal du comptable est de réaliser le plus grand bénéfice possible, ceci en tenant compte non seulement des coûts de fonctionnement des machines mais également du coût d'achat des matières premières. De cette façon, nous déduisons la fonction $G_1$ à maximiser:
 
 $$G_1(N) = 5,833 \times n_A + 11,617 \times n_B + 12,17 \times n_C + 1,3 \times n_D + 31,65 \times n_E + 27,48 \times n_F$$
@@ -136,7 +142,7 @@ $$G(N) = -5,833 \times n_A - 11,617 \times n_B - 12,17 \times n_C - 1,3 \times n
 La solution de base trouvée en utilisant les contraintes de l'entreprise est la fabrication minimale de :\newline
 \begin{itemize}
 \item[\textbullet] 5 produits A
-\item[\textbullet] environ 18 produits B
+\item[\textbullet] 18 produits B
 \item[\textbullet] 0 produit C
 \item[\textbullet] 0 produit D
 \item[\textbullet] 240 produits E
@@ -194,6 +200,8 @@ Pour satisfaire cet objectif, tout en respectant les contraintes de départ, nou
 \item[\textbullet] 122 produits E
 \item[\textbullet] 140 produits F\newline
 \end{itemize}
+
+On arrive à un stockage optimal de 1355 unités.
 
 Ce résultat est parfaitement cohérent car les produits E et F sont ceux qui nécessitent le moins de matières premières et donc qui occupent le moins de stock. Le produit F est le plus adapté mais il est plus long à produire et une production avec plus de produits F ne respecterait pas la contrainte de production minimale hebdomadaire.
 
@@ -262,7 +270,7 @@ Nous obtenons donc un total de :\newline
 \item[\textbullet] 0 produits E
 \item[\textbullet] 0 produits F\newline
 \end{itemize}
-Cela correspond à une utilisation de 640 minutes de la machine 4.\newline
+Cela correspond à une utilisation de 638 minutes de la machine 4.\newline
 
 Cette solution est logique car le produit nécessitant le moins la machine est le produit A (2 minutes). Elle semble également plus réaliste car elle respecte au mieux la demande du responsable personnel.
 
@@ -270,30 +278,59 @@ Cette solution est logique car le produit nécessitant le moins la machine est l
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% Partie PROG MULTICRITERE %%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\newpage
 \part{Programmation linéaire multicritère}
 
-Bite % Qui a marqué ça ?
+Dans cette partie, on considère le point de vue du responsable d'entreprise. On veut construire une solution multicritère satisfaisant au mieux l'ensemble des critères. Pour cela, on va déterminer le \emph{point de mire} et la \emph{matrice des gains}. Nous nous ramènerons à un problème de programmation linéaire afin de construire une \textbf{solution de compromis}.
+
+\section{Détermination du point de mire}
+On cherche le point de mire, c'est à dire la situation idéale (non-réaliste) où tous les critères seraient parfaitement satisfaits.
+
+On prend donc les extrema de chaque critère : maximum si le critère est à maximiser, minimum dans le cas inverse.
+Les extrema  ont été calculés en partie 1 et sont rappelés ici :
+\begin{itemize}
+\item Comptable : Bénéfice de 10410 unités maximum
+\item Atelier : Production de 376 produits maximum
+\item Stocks : Stock de 1355 unités minimum
+\item Personnel : Temps d'utilisation de la machine 4 de 638 minutes minimum
+\end{itemize}
+
+L'objectif du responsable commercial n'apparait pas. En effet, nous avons considéré, en accord avec le client, que son critère était de maximiser la production et que l'équilibre de produits A et B devenait une contrainte. Ainsi, son critère était redondant avec celui du comptable.
+
+Maintenant que le point de mire est défini, nous allons chercher une solution optimale, qui soit incluse dans les domaines de critères et qui s'approche au maximum du point de mire.
+
+\section{Matrice des gains}
+\label{matgains}
+
+
+\section{Recherche de la solution de compromis}
+
+Pour déterminer une solution de compromis, on va se ramener à un problème monocritère. L'objectif le plus important sera considéré comme notre critère, et les autres seront considérés comme des contraintes. Tant qu'un compromis n'est pas trouvé, on dégradera progressivement des contraintes.
+
+Nous avons décidé que l'objectif prépondérant était celui du comptable : maximiser les bénéfices. Les autres critères sont considérés comme des contraintes, représentées par les formules suivantes :
+\todo{Ajouter formules (voir code Matlab)}
+
+Avec la matrice des gains (ci-dessus, page \pageref{matgains}), on peut observer ...
+\todo{terminer cette partie}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% Partie ANALYSE MULTICRITERE %%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\newpage
 \part{Analyse multicritère}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% Partie ANNEXE %%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%Ajouter au début :
-% \usepackage[toc,page]{appendix}
-
 \newpage
 \part*{Annexes}
 \appendix
-\section{\\ Calcul des coefficients pour la modélisation des objectifs du
-  comptable}
+
+%%%%%%%%%%% Annexe A
+\section{Calcul des coefficients pour la modélisation des objectifs du comptable}
+\label{annexe}
 
 Le but du comptable est de maximiser le bénéfice global. Pour cela, on doit
 calculer le bénéfice à la vente pour chaque produit.
@@ -321,5 +358,9 @@ $$ Benefice_A = 5,833 $$
 
 La calcul est analogue pour les autres produits.
 
+
+%%%%%%%%%%% Annexe B
+\newpage
+\section{Code source Matlab}
 
 \end{document}
