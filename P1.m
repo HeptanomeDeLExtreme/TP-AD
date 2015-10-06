@@ -62,6 +62,7 @@ Benefices = T4-Cout_USIN-Cout_MP;
 f=-Benefices;
 [x, val] = linprog(f,A,B,[],[],lb,ub);
 assignin('base', 'X_COMPTABLE', x);
+X_COMPTABLE = floor(x);
 assignin('base', 'MAX_COMPTABLE', -val);
 
 %% Responsable Atelier
@@ -69,14 +70,14 @@ assignin('base', 'MAX_COMPTABLE', -val);
 f=ones(1,6)*-1;
 [x, val] = linprog(f,A,B,[],[],lb,ub);
 assignin('base', 'X_RESP_ATELIER', x);
-X_RESP_ATELIER = x;
+X_RESP_ATELIER = floor(x);
 assignin('base', 'MAX_RESP_ATELIER', -val);
 
 %% Responsable des stocks
 f=[4 4 5 9 4 3] +1;
 [x, val] = linprog(f,A2,B2,[],[],lb,ub);
 assignin('base', 'X_RESP_STOCK', x);
-X_RESP_STOCK = x;
+X_RESP_STOCK = floor(x);
 assignin('base', 'MIN_RESP_STOCK', val);
 
 %% Responsable commercial
@@ -91,7 +92,7 @@ assignin('base', 'MAX_RESP_COM', -val);
 f=[2 10 5 4 13 7];
 [x, val] = linprog(f,A2,B2,[],[],lb);
 assignin('base', 'X_RESP_PERSONNEL', x);
-X_RESP_PERSONNEL = x;
+X_RESP_PERSONNEL = floor(x);
 assignin('base', 'MIN_RESP_PERSONNEL', val);
 
 %% Matrice des gains
