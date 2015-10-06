@@ -4,10 +4,10 @@ L'évaluation des 8 propositions de gestion de l'atelier sont étudiées dans ce
 
 Les propositions sont basées sur 4 critères  :
 
-- g1 : le bénéfice
-- g2 : la gestion du stock
-- g3 : l'équilibre commercial
-- g4 : l'utilisation de la machine 4
+- G1 : le bénéfice
+- G2 : la gestion du stock
+- G3 : l'équilibre commercial
+- G4 : l'utilisation de la machine 4
 
 Nous rappelons que l'évaluation de chaque critère est basée sur une note variant de 0 à 10 (0 représentant la moins bonne note, 10 représentant la meilleure note) et que nous nous sommes appuyés sur la matrice de jugement suivante (remettre le tableau 6 ?).
 
@@ -49,4 +49,52 @@ Après calculs nous obtenons donc la matrice suivante :
  
 4) Graphe de surclassement :
 
+Le graphe de surclassement permet d'avoir une vue globale sur les projets et determiner quel est le meilleur entre tous. Les points de ce graphe représentent les projets analysés et les arcs représentent quant à eux le surclassement. Par exemple, si le projet a surclasse le projet b, un arc sera dessiné de a vers b.
 
+Pour réaliser ce graphe, nous utilisons les matrices de concordance et de discordance ainsi que deux seuils : le seuil de concordance et le seuil de discordance que nous allons définir.
+
+Le seuil de concordance représente le minimum requis en concordance, c'est-à-dire qu'entre deux projets, pour pouvoir dire qu'un projet surclasse l'autre, il faudra que son chiffre soit supérieur ou égal au seuil de concordance. Nous pouvons donc choisir un seuil plus ou moins sévère en fonction des attentes du client. Plus le seuil est élevé, plus le seuil sera sévère et plus la note dans un critère devra être bonne pour que le surclassement soit réprésenté dans le graphe. Nous remarquons également que le seuil doit être compris entre 0,5 et 1 pour avoir un seuil de concordance logique et réaliste. 
+
+Dans notre cas, nous sommes partis d'un seuil de concordance très sévère puis nous avons baissé le degré de sévérité afin d'obtenir un graphe de surclassement avec un nombre d'information suffisant pour pour déterminer quel projet est le meilleur.
+
+Ce seuil de concordance ne doit pas être utilisé seul. Nous devons également utiliser le seuil de discordance qui représente le maximum toléré en discordance. Ce seuil va nous permettre en fait de dessiner ou non sur le graphe un arc en fonction de l'écart qui existe dans le plus mauvais de ses critères. Plus nous prendrons un seuil sévère, plus l'écart devra être serré pour pouvoir effectivement dire qu'un projet surclasse un autre projet. Si le seuil est plutôt indulgent, l'écart pourra être large.
+
+Dans notre cas, nous sommes partis d'un seuil de concordance indulgent puis nous avons baissé le degré de sévérité. 
+
+Voici quatre graphes de surclassement possédant des seuils de concordance et de discordance différents :
+
+... Faire une présentation avec 4 graphes et en légende les seuils de concordances et de discordances utilisés pour la représentation...
+... 1er graphe : seuil de concordance = 3,75/4 ; seuil de discordance = 8/10...
+... 2ème graphe : seuil de concordance = 3/4 ; seuil de discordance = 8/10...
+... 3ème graphe : seuil de concordance = 3/4 ; seuil de discordance = 2/10...
+... 4ème graphe : seuil de concordance = 2,5/4 ; seuil de discordance = 2/10...
+
+Nous souhaitons être plutôt sévères au niveau du critère de concordance afin de trouver le meilleur projet, sans l'être trop. En effet, un seuil de concordance trop important n'est pas très représentatif. Les projets risquent de ne pas être assez bons pour être dessinés sur le graphe et ce n'est pas ce qui est recherché. De plus, nous souhaitons que le projet soit plutôt bon dans chacun des critères, d'où l'utilisation d'un seuil de discordance sévère également. Pour la suite de l'étude nous analyserons donc le graphe de surclassement n°3 possédant un seuil de concordance de 3/4 et un seuil de discordance de 2/10.
+
+L'analyse du graphe n°3 nous permet de constater que le projet a est le meilleur. En effet, c'est celui qui surclasse tous les autres sans être jamais surclassé. C'est le noyau du graphe et le projet que nous considérerons comme le meilleur pour cette première étude.
+
+Etude n°2 : Analyse avec pondération des critères :
+
+Nous avons choisi plusieurs pondérations afin de donner un poids plus importants à certains critères. Nous avons donc décider de privilégier le critère G1 et de minimiser le poids du critère G4 :
+
+- Coefficient de pondération de G1 : 4 (le bénéfice)
+- Coefficient de ponfération de G2 : 2 (la gestion du stock)
+- Coefficient de ponfération de G3 : 2 (l'équilibre commercial)
+- Coefficient de ponfération de G4 : 1 (l'utilisation de la machine 4)
+
+Nous avons décidé de priviléger le bénéfice au détriment d'une plus forte utilisation de la machine 4. (Expliquer pourquoi).
+
+1) Simplification de la matrice de jugement :
+
+De la même façon que dans l'étude n°1, la matrice de jugement est simplifiée en supprimant les projets f et g qui sont dominés respectivement par les projets e et h.
+
+2) Calcul de la matrice de concordance :
+
+La matrice de concordance est calculée de la même façon que dans l'étude n°1. Cependant, certaines pondérations ont été ajoutées afin de donner plus de poids aux critères qui ont été jugés plus importants que les autres. Cela modifie donc la matrice de concordance. Lors du comptage du nombre de critères, on va
+
+
+3) Calcul de la matrice de discordance :
+
+De même pour la matrice de discordance :
+
+... Mettre une nouv
