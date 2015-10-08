@@ -2,7 +2,7 @@ Troisième partie : Analyse multicritère
 
 L'évaluation des 8 propositions de gestion de l'atelier sont étudiées dans cette partie à l'aide d'un algorithme mathématique nommé Electre 1. Cet algorithme permet entre autre de choisir le meilleur projet parmis plusieurs autres projets, ce qui est notre objectif dans cette partie : nous souhaitons proposer à notre client la meilleure solution de gestion d'atelier.
 
-Les propositions sont basées sur 4 critères  :
+Les propositions sont basées sur 4 critères choisis après réflexion de l'ensemble des décideurs de l'entreprise  :
 
 - G1 : le bénéfice
 - G2 : la gestion du stock
@@ -13,7 +13,7 @@ Nous rappelons que l'évaluation de chaque critère est basée sur une note vari
 
 ... matrice de jugement ...
 
-Nous avons décidé dans notre étude de mener deux expériences. La première sera l'étude des différents projets sans aucune pondération des critères analysés. La seconde proposera une étude basée sur la seconde partie de ce projet, la programmation linéaire multicritère, afin d'accorder une pondération plus importantes aux critères qui auront été jugés plus importants. Après une analyse de ces deux expériences, nous en déduirons la meilleure solution à proposer à notre client.
+Nous avons décidé dans notre étude de mener deux expériences. La première sera l'étude des différents projets sans aucune pondération des critères analysés. La seconde proposera une étude basée sur la seconde partie de ce projet, la programmation linéaire multicritère, afin d'accorder une pondération plus importante aux critères qui auront été jugés plus importants. Après une analyse de ces deux expériences, nous en déduirons la meilleure solution à proposer à notre client.
 
 Etude n°1 : Analyse sans pondération des critères :
 
@@ -21,45 +21,53 @@ Etude n°1 : Analyse sans pondération des critères :
 
 La première étape de cette analyse réside dans la simplification du tableau de la matrice de jugement. En effet, certains projets sont simplement moins bons que d'autres et il n'est pas intéressant de les inclure dans l'analyse à moins de vouloir polluer les résulats et le graphe résultant.
 
-Dans notre cas, nous remarquons que le projet e domine le projet g en tous critères. Il n'est dont pas primordial de garder dans l'analyse le projet g. De la même façon, nous remarquons que le projet h domine le projet f en tous critères, donc nous pouvons également supprimer le projet f de l'analyse.
+Dans notre cas, nous remarquons que le projet 'e' domine le projet 'g' en tous critères. Il n'est dont pas primordial de garder dans l'analyse le projet 'g'. De la même façon, nous remarquons que le projet 'h' domine le projet 'f' en tous critères, donc nous pouvons également supprimer le projet 'f' de l'analyse.
 
 2) Calcul de la matrice de concordance :
 
-Nous réalisons la matrice de concordance en comparant chaque projet un à un. Après avoir supprimmé les deux projets précédents, nous obtenons donc une matrice de taille 6 x 6 à analyser avec les projets a, b, c, d, e et h. La formule qui nous permet de remplir la matrice de concordance est la suivante :
+La seconde étape de l'algorithme consiste à réaliser une matrice nommée la matrice des concordance. Cette matrice permet de donner une valeur aux différentes paires de propositions de gestion d'atelier. Nous considérons qu'une paire de propositions est constituée d'un premier projet se situant dans la ligne de la matrice et que le second projet est situé dans la colonne de la matrice. De cette façon, il est possible d'analyser tous les projets les uns par rapport aux autres et de leur attribuer un poids plus ou moins grand en fonction de la supériorité du premier projet par rapport au second. Cette supériorité est déduite en fonction de l'analyse de chaque critère, ceci étant explicité plus loin à l'aide de la formule mathématique associée. 
+
+Après avoir supprimmé les deux projets précédents, nous obtenons donc une matrice de taille 6 x 6 à analyser avec les projets 'a', 'b', 'c', 'd', 'e' et 'h'. La formule qui nous permet de remplir la matrice de concordance est la suivante :
 
 ... Mettre la formule slide 58 du poly partie 3 analyse multicritère ...
 
-Pour faire simple, cette formule demande pour chaque paire de projets (les lignes de la la matrice représentent le projet i, les colonnes de la matrice représentent les projets j) de compter combien de fois le projet i est meilleur ou équivalent au projet j. Ce chiffre est divisé par la somme de tous les critères. Sachant qu'il existe 4 critères, nous diviserons donc tous les résultats par 4. (Met-on un exemple pas à pas en annexe ?) 
+Nous considérons que les lignes de la matrice représentent le projet i et que les colonnes de la matrice représentent le projet j.
 
-Après calculs nous obtenons donc la matrice suivante :
+Pour faire simple, cette formule consiste, pour chaque paire de projets analysés, à compter combien de fois le projet i est meilleur ou équivalent au projet j. Ce chiffre est divisé par la somme de tous les critères sur lesquels ont été jugés les propositions. Sachant qu'il existe 4 critères, nous diviserons donc tous les résultats par 4. (Met-on un exemple pas à pas en annexe ?) 
+
+Après calculs nous obtenons donc la matrice suivante : (devons-nous mettre tout le détail des calculs ? ou un exemple ?)
 
 ... Mettre le résultat matriciel de la matrice de concordance ...
 
 3) Calcul de la matrice de discordance :
 
-Nous réalisons la matrice de discordance de la même façon que la matrice de concordance à ceci près que les coefficients ne sont pas calculés de la même façon. Nous obtenons une matrice équivalente, de taille 6 x 6 avec les projets a, b, c, d, e et h. La formule qui va nous permettre de remplir cette matrice est la suivante :
+La troisième étape de l'algorithme consiste à réaliser une matrice nommée la matrice de discordance. Cette matrice permet également de données une valeur aux différentes paires de propositions de gestion d'atelier. De la même façon qu'avec la matrice de concordance, nous considérons qu'une paire de propositions est constituée d'un premier projet se situant dans la ligne de la matrice et que le second projet est situé dans la colonne de la matrice. La valeur qui sera attribuée à chaque paire de propositions correspondra à un écart entre deux critères, écart calculé lorsque le premier projet est moins bon le second projet dans un des critèresanalysés. Une explication plus en détail est fournie plus loin à l'aide de la formule mathématique associée.
+
+Nous réalisons la matrice de discordance de la même façon que la matrice de concordance à ceci près que les coefficients ne sont pas calculés de la même façon. Nous obtenons une matrice équivalente, de taille 6 x 6 avec les projets 'a', 'b', 'c', 'd', 'e' et 'h'. La formule qui va nous permettre de remplir cette matrice est la suivante :
 
 ... Mettre la formule slide 59 du poly partie 3 analyse multicritère ...
 
-Pour faire simple, cette formule demande pour chaque paire de projets (les lignes de la la matrice représentent le projet i, les colonnes de la matrice représentent les projets j) de prendre l'écart maximum lorsque le projet i est moins bon que le projet j. Ce chiffre est ensuite divisé par l'échelle maximum, c'est-à-dire l'écart maximum qui a été utilisé pour la notation des projets dans chacun des critères. Dans notre cas, la note minimale est de 0 et la note maximale est de 10. L'écart sera donc de 10 et nous diviserons donc le résultat pour 10. (Met-on un exemple pas à pas en annexe ?)
+Nous considérons toujours que les lignes de la matrice représentent le projet i et que les colonnes de la matrice représentent le projet j.
 
-Après calculs nous obtenons donc la matrice suivante :
+Pour faire simple, cette formule demande pour chaque critère de chaque paire de projets de calculer l'écart présent entre le critère du projet i et le critère du projet j lorsque le projet i se révèle moins bon que le projet j au niveau de ce critère. On soustrait donc la valeur du critère du projet j à la valeur du critère du projet i pour chaque critère qui présente ce cas. Il faut ensuite prendre l'écart maximum qui aura été trouvé après l'analyse de chacun des critères. Ce chiffre est ensuite divisé par l'échelle maximum, c'est-à-dire l'écart maximum qui a été utilisé pour la notation des projets dans chacun des critères. Dans notre cas, la note minimale est de 0 et la note maximale est de 10. L'écart sera donc de 10 et nous diviserons donc le résultat pour 10. (Met-on un exemple pas à pas en annexe ?)
+
+Après calculs nous obtenons donc la matrice suivante : (devons-nous mettre tout le détail des calculs ? ou un exemple ?)
 
 ... Mettre le résultat matriciel de la matrice de discordance ...
  
 4) Graphe de surclassement :
 
-Le graphe de surclassement permet d'avoir une vue globale sur les projets et determiner quel est le meilleur entre tous. Les points de ce graphe représentent les projets analysés et les arcs représentent quant à eux le surclassement. Par exemple, si le projet a surclasse le projet b, un arc sera dessiné de a vers b.
+Le graphe de surclassement permet d'avoir une vue globale sur les projets et de déterminer quel est le meilleur entre tous. Les points de ce graphe représentent les propositions analysées et les arcs représentent quant à eux le surclassement, c'est-à-dire le fait qu'une proposition 'i' soit supérieure à une proposition 'j' ( i ---> j).
 
 Pour réaliser ce graphe, nous utilisons les matrices de concordance et de discordance ainsi que deux seuils : le seuil de concordance et le seuil de discordance que nous allons définir.
 
-Le seuil de concordance représente le minimum requis en concordance, c'est-à-dire qu'entre deux projets, pour pouvoir dire qu'un projet surclasse l'autre, il faudra que son chiffre soit supérieur ou égal au seuil de concordance. Nous pouvons donc choisir un seuil plus ou moins sévère en fonction des attentes du client. Plus le seuil est élevé, plus le seuil sera sévère et plus la note dans un critère devra être bonne pour que le surclassement soit réprésenté dans le graphe. Nous remarquons également que le seuil doit être compris entre 0,5 et 1 pour avoir un seuil de concordance logique et réaliste. 
+Le seuil de concordance représente le minimum requis en concordance, c'est-à-dire qu'entre deux projets, pour pouvoir dire qu'un projet surclasse effectivement l'autre, il faudra que son chiffre soit supérieur ou égal au seuil de concordance. Nous pouvons donc choisir un seuil plus ou moins sévère en fonction des attentes du client. Plus le seuil est élevé, plus le seuil sera sévère et plus la note dans un critère devra être bonne pour que le surclassement soit réprésenté dans le graphe. Nous remarquons également que le seuil doit être compris entre 0,5 et 1 pour avoir un seuil de concordance logique et réaliste. 
 
 Dans notre cas, nous sommes partis d'un seuil de concordance très sévère puis nous avons baissé le degré de sévérité afin d'obtenir un graphe de surclassement avec un nombre d'information suffisant pour pour déterminer quel projet est le meilleur.
 
-Ce seuil de concordance ne doit pas être utilisé seul. Nous devons également utiliser le seuil de discordance qui représente le maximum toléré en discordance. Ce seuil va nous permettre en fait de dessiner ou non sur le graphe un arc en fonction de l'écart qui existe dans le plus mauvais de ses critères. Plus nous prendrons un seuil sévère, plus l'écart devra être serré pour pouvoir effectivement dire qu'un projet surclasse un autre projet. Si le seuil est plutôt indulgent, l'écart pourra être large.
+Cependant, ce seuil de concordance ne doit pas être utilisé seul. Nous devons également utiliser le seuil de discordance qui représente le maximum toléré en discordance. Ce seuil va nous permettre en fait de dessiner ou non sur le graphe un arc en fonction de l'écart qui existe dans le plus mauvais de ses critères. Plus nous prendrons un seuil sévère, plus l'écart devra être serré pour pouvoir effectivement dire qu'un projet surclasse un autre projet. Si le seuil est plutôt indulgent, l'écart pourra être large.
 
-Dans notre cas, nous sommes partis d'un seuil de concordance indulgent puis nous avons baissé le degré de sévérité. 
+Dans notre cas, nous sommes partis d'un seuil de discordance indulgent puis nous avons baissé le degré de sévérité. 
 
 Voici quatre graphes de surclassement possédant des seuils de concordance et de discordance différents :
 
@@ -71,30 +79,51 @@ Voici quatre graphes de surclassement possédant des seuils de concordance et de
 
 Nous souhaitons être plutôt sévères au niveau du critère de concordance afin de trouver le meilleur projet, sans l'être trop. En effet, un seuil de concordance trop important n'est pas très représentatif. Les projets risquent de ne pas être assez bons pour être dessinés sur le graphe et ce n'est pas ce qui est recherché. De plus, nous souhaitons que le projet soit plutôt bon dans chacun des critères, d'où l'utilisation d'un seuil de discordance sévère également. Pour la suite de l'étude nous analyserons donc le graphe de surclassement n°3 possédant un seuil de concordance de 3/4 et un seuil de discordance de 2/10.
 
-L'analyse du graphe n°3 nous permet de constater que le projet a est le meilleur. En effet, c'est celui qui surclasse tous les autres sans être jamais surclassé. C'est le noyau du graphe et le projet que nous considérerons comme le meilleur pour cette première étude.
+L'analyse du graphe n°3 nous permet de constater que le projet 'a' est le meilleur. En effet, c'est celui qui surclasse tous les autres sans être jamais surclassé. C'est le noyau du graphe et le projet que nous considérerons comme le meilleur pour cette première étude.
 
 Etude n°2 : Analyse avec pondération des critères :
 
-Nous avons choisi plusieurs pondérations afin de donner un poids plus importants à certains critères. Nous avons donc décider de privilégier le critère G1 et de minimiser le poids du critère G4 :
+Nous avons choisi plusieurs pondérations afin de donner un poids plus importants à certains critères. D'après l'étude réalisée dans la deuxième partie de ce compte-rendu, "Programmation linéaire multicritère", nous avons donc décider de privilégier le critère G1 et de minimiser le poids du critère G4 :
 
 - Coefficient de pondération de G1 : 4 (le bénéfice)
 - Coefficient de ponfération de G2 : 2 (la gestion du stock)
 - Coefficient de ponfération de G3 : 2 (l'équilibre commercial)
 - Coefficient de ponfération de G4 : 1 (l'utilisation de la machine 4)
 
-Nous avons décidé de priviléger le bénéfice au détriment d'une plus forte utilisation de la machine 4. (Expliquer pourquoi).
+Nous avons décidé de priviléger le bénéfice au détriment d'une plus forte utilisation de la machine 4. En effet, en ces temps de crises, il est important que l'entreprise produise un chiffre d'affaire le plus élevé possible. (IL RESTE DES EXPLICATIONS A FOURNIR POUR CETTE PARTIE). 
 
 1) Simplification de la matrice de jugement :
 
-De la même façon que dans l'étude n°1, la matrice de jugement est simplifiée en supprimant les projets f et g qui sont dominés respectivement par les projets e et h.
+De la même façon que dans l'étude n°1, la matrice de jugement est simplifiée en supprimant les projets 'f' et 'g' qui sont dominés respectivement par les projets 'e' et 'h'.
 
 2) Calcul de la matrice de concordance :
 
-La matrice de concordance est calculée de la même façon que dans l'étude n°1. Cependant, certaines pondérations ont été ajoutées afin de donner plus de poids aux critères qui ont été jugés plus importants que les autres. Cela modifie donc la matrice de concordance. Lors du comptage du nombre de critères, on va
+La matrice de concordance est calculée de la même façon que dans l'étude n°1. Cependant, certaines pondérations ont été ajoutées afin de donner plus de poids aux critères qui ont été jugés plus importants que les autres. Cela modifie donc la matrice de concordance. Lorsque le critère du projet i sera supérieur au même critère du projet j, nous allons donc compter cette valeur en pondérant par le coefficient associé au critère. 
 
+Après calculs nous obtenons donc la matrice suivante : (devons-nous mettre tout le détail des calculs ? ou un exemple ?)
+
+... Mettre le résultat matriciel de la matrice de concordance ...
 
 3) Calcul de la matrice de discordance :
 
-De même pour la matrice de discordance :
+En ce qui concerne la matrice de discordance, la pondération associée aux différents critères ne modifie en rien la matrice. Nous obtenons donc la même matrice de discordance calculée lors de la première étude :
 
-... Mettre une nouv
+... Mettre le résultat matriciel de la matrice de discordance ...
+
+4) Graphe de surclassement :
+
+De la même façon que pour l'étude n°1, nous sommes partis de de seuils plutôt sévères pour ensuite trouver les seuils les plus représentatifs.
+
+Voici quatre graphes de surclassement possédant des seuils de concordance et de discordance différents :
+
+... Faire une présentation avec 4 graphes et en légende les seuils de concordances et de discordances utilisés pour la représentation...
+... 1er graphe : seuil de concordance = 3,75/4 ; seuil de discordance = 8/10...
+... 2ème graphe : seuil de concordance = 3/4 ; seuil de discordance = 8/10...
+... 3ème graphe : seuil de concordance = 3/4 ; seuil de discordance = 2/10...
+... 4ème graphe : seuil de concordance = 2,5/4 ; seuil de discordance = 2/10...
+
+Pour la suite de cette étude, nous étudierons donc le graphe .... METTRE LE NUMERO DU GRAPHE A ETUDIER ....
+
+... IL RESTE A FAIRE L'ANALYSE DU GRAPHE QUI A ETE CHOISI POUR DETERMINER LE NOYAU ET DONC LE PROJET QUI EST LE MEILLEUR ! ...
+
+Après avoir analysé ces études, nous nous rendons compte que ... IL FAUDRAIT LES RESULTATS DE L'ETUDE N°2 POUR CONTINUER LA CONCLUSION DE CETTE PARTIE ! ...
