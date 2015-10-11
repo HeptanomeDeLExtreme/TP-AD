@@ -150,13 +150,13 @@ Beq=0;
 contrainteTrasforme = [-1 -1 -1 -1 -1 -1;... % Resp Atelier
     5 5 6 10 5 4;... % Resp Stock
     2 10 5 4 13 7;... % Resp Personnel
-    -1 -1 -1 -1 -1]%Resp commercial;
+    -1 -1 -1 -1 -1]% Resp commercial; %%% EQUATION A CHANGER
 
 % Construction des matrices A et B
 A(1:7, 1:6)=T1';
 A(8:10, 1:6)=T2;
 A(11:13, 1:6)=contrainteTrasforme;
-B=[4800;4800;4800;4800;4800;4800;4800;350;620;485;-350;1680;2508.8];
+B=[4800;4800;4800;4800;4800;4800;4800;350;620;485;-350;1680;2508.8;-x4]; %%% -x4 A CHANGER
 
 % Résolution du problème
 [X_CHEF,~] = linprog(f,A,B,Aeq,Beq,lb);
