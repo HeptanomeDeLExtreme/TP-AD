@@ -304,7 +304,10 @@ Cette solution est logique car le produit nécessitant le moins la machine est l
 %%%%%% Partie PROG MULTICRITERE %%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\part{Programmation linéaire multicritère}
+\part{Recherche d'un compromis satisfaisant les objectifs des différents responsables}
+\begin{large}
+\emph{Programmation linéaire multicritère}
+\end{large}
 
 Dans cette partie, nous considérons le point de vue du responsable d'entreprise. On veut construire une solution multicritère satisfaisant au mieux l'ensemble des objectifs de chaque responsable. Pour cela, nous allons déterminer le \emph{point de mire} et la \emph{matrice des gains}. Nous nous ramènerons à un problème de programmation linéaire afin de construire une \textbf{solution de compromis}.
 
@@ -394,7 +397,10 @@ Nous avions un bénéfice de 5275,6, alors que les autres contraintes ont égale
 %%%%%% Partie ANALYSE MULTICRITERE %%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\part{Analyse multicritère}
+\part{Recherche du meilleur projet}
+\begin{large}
+\emph{Analyse multicritère}
+\end{large}
 
 L'évaluation des 8 propositions de gestion de l'atelier est étudiée dans cette partie à l'aide d'un algorithme mathématique nommé Electre 1. Cet algorithme permet de choisir le meilleur projet parmi une liste de solutions, ce qui est notre objectif dans cette partie : nous souhaitons proposer à notre client la meilleure solution de gestion d'atelier.
 
@@ -416,7 +422,7 @@ Nous rappelons que l'évaluation de chaque critère est basée sur une note vari
 
 Nous avons décidé dans notre étude de mener deux expériences. La première sera l'étude des différents projets sans aucune pondération des critères analysés. La seconde proposera une étude basée sur la seconde partie de ce projet, la programmation linéaire multicritère, afin d'accorder une pondération plus importantes aux critères qui auront été jugés plus importants. Après une analyse de ces deux expériences, nous en déduirons la meilleure solution répondant à la demande du client.
 
-\section{Étude 1 : Analyse sans pondération des critères}
+\section{Étude 1 : Analyse théorique (sans pondération des critères)}
 
 \subsection{Simplification de la matrice de jugement}
 
@@ -514,11 +520,13 @@ Voici quatre graphes de surclassement possédant des seuils de concordance et de
 \end{center}
 \end{figure}
 
+\subsection{Conclusion de l'étude 1}
+
 Nous souhaitons être plutôt sévères au niveau du seuil de concordance afin de trouver le meilleur projet, sans l'être trop. En effet, un seuil de concordance trop important n'est pas très représentatif. Les projets risquent de ne pas être assez bons pour être dessinés sur le graphe et ce n'est pas ce qui est recherché. De plus, nous souhaitons que le projet soit plutôt bon dans chacun des critères, d'où l'utilisation d'un seuil de discordance sévère également. Pour la suite de l'étude nous analyserons donc le graphe de surclassement \no3 possédant un seuil de concordance de $\frac{3}{4}$ et un seuil de discordance de $\frac{2}{10}$.
 
 L'analyse du graphe \no3 nous permet de constater que le projet \textbf{A} est le meilleur. En effet, c'est celui qui surclasse tous les autres sans être jamais surclassé. C'est le noyau du graphe et le projet que nous considérerons comme le meilleur pour cette première étude.
 
-\section{Étude 2 : Analyse avec pondération des critères}
+\section{Étude 2 : Analyse réaliste (avec pondération des critères)}
 
 Nous avons choisi plusieurs pondérations afin de donner un poids plus important à certains critères. D'après l'étude réalisée dans la deuxième partie de ce compte-rendu, "Programmation linéaire multicritère", nous avons donc décidé de privilégier le critère G1 et de minimiser le poids du critère G4 :
 
@@ -592,11 +600,17 @@ Voici quatre graphes de surclassement possédant des seuils de concordance et de
 \end{center}
 \end{figure}
 
+\subsection{Conclusion de l'étude 2}
+
 En privilégiant le critère G1 concernant le bénéfice et en minimisant le critère G4 concernant l'utilisation de la machine 4 nous obtenons des graphes assez similaires quels que soient les seuils établis ci-dessus. En effet, le fait d'avoir pondéré les critères permet de converger plus facilement vers le projet respectant le plus les critères importants.
 
 Il s'avère que le noyau de chaque graphe est le projet \textbf{A}. C'est donc le meilleur projet.
 
-Après ces deux études, nous remarquons que le projet \textbf{A} domine tous les autres projets.
+\section{Conclusion}
+
+L'étude des contraintes et des objectifs de chacun des responsables nous ont permis de réaliser une analyse théorique puis réaliste des projets qu'il était possible de mener au sein de l'entreprise FaBrique. L'analyse mutlicritère nous a permis d'isoler les objectifs les plus importants afin d'analyser et de déterminer le meilleur choix au sein de tous les projets proposés. 
+
+Après ces deux études, nous remarquons que le projet \textbf{A} domine tous les autres projets, autant pour l'étude théorique et que pour l'étude réaliste, et c'est le projet que nous choisissons de proposer à notre client pour la gestion de son atelier.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
