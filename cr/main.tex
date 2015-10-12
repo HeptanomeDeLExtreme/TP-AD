@@ -10,6 +10,8 @@
 \usepackage{appendix}%[toc,page]
 \usepackage{varioref}
 \usepackage{float}
+\usepackage[numbered,bw]{mcode}
+\usepackage{listing}
 
 %3 lignes suivantes : Remet le compteur de section à 0 à chaque nouvelle partie
 \makeatletter
@@ -29,6 +31,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%% Introduction %%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Membres du groupe}
+\begin{itemize}
+\item Nicolas \textsc{Bonfante}
+\item Cédric \textsc{Boscher}
+\item Romain \textsc{Bourrier}
+\item Marion \textsc{Chalumeau}
+\item Charles \textsc{de Lacombe}
+\item Ophélie \textsc{Delsaux}
+\item Nicolas \textsc{Nadisic}
+\end{itemize}
 
 \section*{Introduction}
 
@@ -391,7 +404,7 @@ Nous rappelons que l'évaluation de chaque critère est basée sur une note vari
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.5]{img/AD-Jugement.jpg}
+\includegraphics[scale=0.3]{img/AD-Jugement.jpg}
 \end{center}
 \end{figure}
 
@@ -425,7 +438,7 @@ Après calculs nous obtenons donc la matrice suivante :
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.5]{img/AD_Concordance_neutre.jpg}
+\includegraphics[scale=0.3]{img/AD_Concordance_neutre.jpg}
 \end{center}
 \end{figure}
 
@@ -447,7 +460,7 @@ Après calculs nous obtenons donc la matrice suivante :
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.5]{img/AD-Discordance.jpg}
+\includegraphics[scale=0.3]{img/AD-Discordance.jpg}
 \end{center}
 \end{figure}
 
@@ -469,28 +482,28 @@ Voici quatre graphes de surclassement possédant des seuils de concordance et de
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.5]{img/G1-neutre.jpg}
+\includegraphics[scale=0.3]{img/G1-neutre.jpg}
 \caption{Analyse sans pondérations - Seuil de concordance = $\frac{3,75}{4}$ ; seuil de discordance = $\frac{8}{10}$}
 \end{center}
 \end{figure}
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.5]{img/G2-neutre.jpg}
+\includegraphics[scale=0.3]{img/G2-neutre.jpg}
 \caption{Analyse sans pondérations - Seuil de concordance = $\frac{3}{4}$ ; seuil de discordance = $\frac{8}{10}$}
 \end{center}
 \end{figure}
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.5]{img/G3-neutre.jpg}
+\includegraphics[scale=0.3]{img/G3-neutre.jpg}
 \caption{Analyse sans pondérations - Seuil de concordance = $\frac{3}{4}$ ; seuil de discordance = $\frac{2}{10}$}
 \end{center}
 \end{figure}
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.5]{img/G4-neutre.jpg}
+\includegraphics[scale=0.3]{img/G4-neutre.jpg}
 \caption{Analyse sans pondérations - Seuil de concordance = $\frac{2,5}{4}$ ; seuil de discordance = $\frac{2}{10}$}
 \end{center}
 \end{figure}
@@ -525,7 +538,7 @@ Après calculs nous obtenons donc la matrice suivante :
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.5]{img/AD_Concordance_ponderee.jpg}
+\includegraphics[scale=0.3]{img/AD_Concordance_ponderee.jpg}
 \end{center}
 \end{figure}
 
@@ -535,7 +548,7 @@ En ce qui concerne la matrice de discordance, la pondération associée aux diff
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.5]{img/AD-Discordance.jpg}
+\includegraphics[scale=0.3]{img/AD-Discordance.jpg}
 \end{center}
 \end{figure}
 
@@ -547,28 +560,28 @@ Voici quatre graphes de surclassement possédant des seuils de concordance et de
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.5]{img/G1-pond.jpg}
+\includegraphics[scale=0.3]{img/G1-pond.jpg}
 \caption{Analyse avec pondérations - Seuil de concordance = $\frac{3,75}{4}$ ; seuil de discordance = $\frac{8}{10}$}
 \end{center}
 \end{figure}
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.5]{img/G2-pond.jpg}
+\includegraphics[scale=0.3]{img/G2-pond.jpg}
 \caption{Analyse avec pondérations - Seuil de concordance = $\frac{3}{4}$ ; seuil de discordance = $\frac{8}{10}$}
 \end{center}
 \end{figure}
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.5]{img/G3-pond.jpg}
+\includegraphics[scale=0.3]{img/G3-pond.jpg}
 \caption{Analyse avec pondérations - Seuil de concordance = $\frac{3}{4}$ ; seuil de discordance = $\frac{2}{10}$}
 \end{center}
 \end{figure}
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[scale=0.5]{img/G4-pond.jpg}
+\includegraphics[scale=0.3]{img/G4-pond.jpg}
 \caption{Analyse avec pondérations - Seuil de concordance = $\frac{2,5}{4}$ ; seuil de discordance = $\frac{2}{10}$}
 \end{center}
 \end{figure}
@@ -622,5 +635,6 @@ La calcul est analogue pour les autres produits.
 %%%%%%%%%%% Annexe B
 \newpage
 \section{Code source Matlab}
+\lstinputlisting{./anal-rapport.m}
 
 \end{document}

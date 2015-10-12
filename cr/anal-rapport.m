@@ -12,21 +12,21 @@ T1 = [  8   7   8   2   5   5   5;...
     0   7   10  13  10  8   0;...
     10  12  25  7   25  6   7];
 
-% Quantité de matière première par produit
+% Quantite de matiere premiere par produit
 T2 = [  1   2   1   5   0   2;...
     2   2   1   2   2   1;...
     1   0   3   2   2   0];
 
-% Quantité max. de matière première
+% Quantite max. de matiere premiere
 T3 = [  350 620 485];
 
 % Prix de vente des produits finis
 T4 = [  20  27  26  30  45  40];
 
-% Prix d'achat des matières premières
+% Prix d'achat des matieres premieres
 T4bis=[ 3   4   2   ];
 
-% Coût horaire des machines
+% Cout horaire des machines
 T5=[2 2 1 1 2 3 1];
 
 % Matrice des jugements
@@ -35,8 +35,8 @@ T6_old = [  6   5   5   5;...
     3   4   7   3;...
     3   7   5   4;...
     5   4   3   9;...
-    2   5   7   3;.... % Ligne dominée
-    5   4   2   9;.... % Ligne dominée
+    2   5   7   3;.... % Ligne dominee
+    5   4   2   9;.... % Ligne dominee
     3   5   7   4];
 
 T6 = [  6   5   5   5;...
@@ -58,7 +58,7 @@ for it_produit=1:6
     end
 end
 
-% Temps d'étude
+% Temps d'etude
 t_max = 4800;
 
 % Variables de linprog
@@ -68,19 +68,19 @@ B=[t_max;t_max;t_max;t_max;t_max;t_max;t_max;T3(1);T3(2);T3(3)];
 lb=[ 5 5 0 0 0 0];
 ub = ones(1,6)*10000000;
 
-% En cas de contrainte supplémentaire
+% En cas de contrainte supplementaire
 A2=[A; ones(1,6)*-1];
 B2=[B; -300];
 
 s_concorde = 2.5/4;
 s_discorde = 2/10;
 
-%% Partie 1 : Objectifs des différents responsables ***********************
+%% Partie 1 : Objectifs des differents responsables ***********************
 % Dans cette section, on cherche la solution qui satisfait au mieux chacun
-% des responsables de l'entreprise indépendamment des autres.
+% des responsables de l'entreprise independamment des autres.
 
 % Comptable ---------------------------------------------------------------
-% Le comptable cherche à maximiser les benefices générés.
+% Le comptable cherche a maximiser les benefices generes.
 Benefices = T4-Cout_USIN-Cout_MP;
 
 f=-Benefices;
@@ -91,7 +91,7 @@ assignin('base', 'X_C', X_C);
     end
 
 % Responsable Atelier -----------------------------------------------------
-% On cherche ici à maximiser le nombre de pièces produites
+% On cherche ici a maximiser le nombre de pieces produites
 f=ones(1,6)*-1;
 [X_RA,~] = linprog(f,A,B,[],[],lb,ub);
 assignin('base', 'X_RA', X_RA);
@@ -126,7 +126,7 @@ assignin('base', 'X_RP', X_RP);
     end
 
 %% Partie 2 : Vision du responsable d'entreprise
-% Dans cette section, on fait de la programmation linéaire multicritère
+% Dans cette section, on fait de la programmation lineaire multicritere
 % pour trouver une solution qui satisfait au mieux tous les objectifs des
 % responsables de l'entreprise
 
@@ -140,13 +140,13 @@ Matrice_Gains = [ F(X_RA) G(X_RA) H(X_RA) J(X_RA) K(X_RA);...
 assignin('base','MAT_GAINS',Matrice_Gains);
 
 
-%  Ici on n'a gardé qu'un critère et transformé les autres en contraintes
-%  Afin de se rapprocher du point optimal, on procède par dichotomie.
+%  Ici on n'a garde qu'un critere et transforme les autres en contraintes
+%  Afin de se rapprocher du point optimal, on procede par dichotomie.
 f=-Benefices;
 Aeq=[1 0 0 0 -1 0];
 Beq=0;
 
-% Transformation des critères en contraintes
+% Transformation des criteres en contraintes
 contrainteTransforme = [-1 -1 -1 -1 -1 -1;... % Resp Atelier
     5 5 6 10 5 4;... % Resp Stock
     2 10 5 4 13 7];... % Resp Personnel
@@ -160,15 +160,15 @@ B=[4800;4800;4800;4800;4800;4800;4800;350;620;485;-350;1680;2508.8];
 % Valeurs de B pour un contre-exemple
 %B=[4800;4800;4800;4800;4800;4800;4800;350;620;485;-240;2300;1000]; 
 
-% Résolution du problème
+% Resolution du probleme
 [X_CHEF,~] = linprog(f,A,B,Aeq,Beq,lb);
 assignin('base','X_CHEF',X_CHEF);
 
-%% Partie 3a : Analyse multicritère sans pondération
-% Dans cette section, on a 8 propositions à analyser à partir de 4 critères
-% d'étude. On cherche la meilleure, d'abord sans hiérarchiser les critères.
+%% Partie 3a : Analyse multicritere sans ponderation
+% Dans cette section, on a 8 propositions a analyser a partir de 4 criteres
+% d'etude. On cherche la meilleure, d'abord sans hierarchiser les criteres.
 
-% Dans l'étude préliminaire, on élimine les propositions F et G, dominées
+% Dans l'etude preliminaire, on elimine les propositions F et G, dominees
 % par les autres.
 
 % Matrice de concordance
@@ -235,8 +235,8 @@ assignin('base','G_NEUTRE',Graphe);
 %G_= biograph(Graphe,{'A','B','C','D','E','H'},'Label','Graphe de surclassement');
 view(G_);
 
-%% Partie 3b : Analyse multicritère avec pondération
-% On hiérarchise cette fois les critères
+%% Partie 3b : Analyse multicritere avec ponderation
+% On hierarchise cette fois les criteres
 
 % Matrice de concordance
 Concorde = zeros(6); % A B C D E H
