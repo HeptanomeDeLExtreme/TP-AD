@@ -45,7 +45,7 @@
 
 \section*{Introduction}
 
-  L'entreprise FaBrique a émis une demande d'analyse décisionnelle concernant la mise en place d'un plan de fabrication hebdomadaire optimal. L'entreprise fabrique différentes gammes de produits grâce à l'utilisation de machines au sein de sa structure. La demande du client nous impose de respecter des contraintes logistiques au sein de l'entreprise, mais également d'analyser les besoins unitaires de chaque responsable. Dans un premier temps, nous chercherons une solution optimale répondant de manière individuelle au besoin de chaque responsable, tout en tenant compte des contraintes identifiées au préalable. De manière à fournir un unique plan optimal pour toute l'entreprise, avec consultation du responsable d'entreprise, nous réaliserons ensuite une analyse multicritère afin d'établir un plan permettant un compromis satisfaisant pour chacune des parties. Nous inclurons systématiquement l'analyse et la modélisation mathématique effectuées en amont de la résolution du problème.
+  L'entreprise FaBrique a émis une demande d'analyse décisionnelle concernant la mise en place d'un plan de fabrication hebdomadaire optimal. L'entreprise fabrique différentes gammes de produits grâce à l'utilisation de machines au sein de sa structure. La demande du client nous impose de respecter des contraintes logistiques au sein de l'entreprise, mais également d'analyser les besoins unitaires de chaque responsable. Dans un premier temps, nous chercherons une solution optimale répondant de manière individuelle aux besoins de chaque responsable, tout en tenant compte des contraintes identifiées au préalable. Avec la consultation du responsable d'entreprise et de manière à fournir un unique plan optimal pour toute l'entreprise, nous réaliserons une analyse multicritère afin d'établir un plan permettant un compromis satisfaisant pour chacune des parties. Nous inclurons systématiquement l'analyse et la modélisation mathématique effectuées en amont de la résolution du problème.
   
 \newpage
 \tableofcontents
@@ -54,7 +54,10 @@
 %%%%%% Partie PROG MONOCRITERE %%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\part{Programmation linéaire monocritère}
+\part{Modélisation des contraintes et des objectifs}
+\begin{large}
+\emph{Programmation linéaire monocritère}
+\end{large}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% Modélisation des contraintes %%%%%%%%
@@ -295,6 +298,10 @@ Cela correspond à une utilisation de 640 minutes de la machine 4.\newline
 
 Cette solution est logique car le produit nécessitant le moins la machine est le produit A (2 minutes). Elle semble également plus réaliste car elle respecte au mieux la demande du responsable personnel.
 
+%%%% RELECTURE FINIE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% Partie PROG MULTICRITERE %%%%%%%%
@@ -360,6 +367,8 @@ $$ - n_A - n_B - n_C - n_D - n_E - n_F < x_1 $$
 $$ 5n_A + 5n_B + 6n_C + 10n_D + 5n_E + 4n_F < x_2 $$
 $$ 2n_A + 10n_B + 5n_C + 4n_D + 13n_E + 7n_F < x_3 $$
 $$ - n_A - n_B - n_C - n_D - n_E - n_F < x_4 $$ 
+
+On constate que la première et la dernière inéquations sont identiques, et donc redondantes. On a donc $x_1 = x_4$, et on peut éliminer la dernière équation.
 
 On va faire varier $x_1$, $x_2$, et $x_3$ afin de trouver des solutions satisfaisantes, tout en prenant en compte les optimum. Il serait par exemple incohérent de considérer une production supérieure au maximum possible.
 
