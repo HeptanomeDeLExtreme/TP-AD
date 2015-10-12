@@ -11,35 +11,35 @@ T1 = [  8   7   8   2   5   5   5;...
     0   7   10  13  10  8   0;...
     10  12  25  7   25  6   7];
 
-% Quantité de matière première par produit
+% Quantite de matiere premiere par produit
 T2 = [  1   2   1   5   0   2;...
     2   2   1   2   2   1;...
     1   0   3   2   2   0];
 
-% Quantité max. de matière première
+% Quantite max. de matiere premiere
 T3 = [  350 620 485];
 
 % Prix de vente des produits finis
 T4 = [  20  27  26  30  45  40];
 
-% Prix d'achat des matières premières
+% Prix d'achat des matieres premieres
 T4bis=[ 3   4   2   ];
 
-% Coût horaire des machines
+% Cout horaire des machines
 T5=[2 2 1 1 2 3 1];
 
 
 fprintf('----- Solution -------------------------------------\n');
-fprintf(['     Produits A :' num2str(X(1),'%6.2f') ' unités. \n']);
-fprintf(['     Produits B :' num2str(X(2),'%6.2f') ' unités. \n']);
-fprintf(['     Produits C :' num2str(X(3),'%6.2f') ' unités. \n']);
-fprintf(['     Produits D :' num2str(X(4),'%6.2f') ' unités. \n']);
-fprintf(['     Produits E :' num2str(X(5),'%6.2f') ' unités. \n']);
-fprintf(['     Produits F :' num2str(X(6),'%6.2f') ' unités. \n']);
+fprintf(['     Produits A :' num2str(X(1),'%6.2f') ' unites. \n']);
+fprintf(['     Produits B :' num2str(X(2),'%6.2f') ' unites. \n']);
+fprintf(['     Produits C :' num2str(X(3),'%6.2f') ' unites. \n']);
+fprintf(['     Produits D :' num2str(X(4),'%6.2f') ' unites. \n']);
+fprintf(['     Produits E :' num2str(X(5),'%6.2f') ' unites. \n']);
+fprintf(['     Produits F :' num2str(X(6),'%6.2f') ' unites. \n']);
 
 fprintf('----- Analyse de la solution -----------------------\n');
 %% Comptable
-% On cherche ici à maximiser les bénéfices
+% On cherche ici a maximiser les benefices
 Cout_USIN = zeros(1,6);
 Cout_MP = zeros(1,6);
 
@@ -58,10 +58,10 @@ Argent = 0;
 for no_produit=1:6
     Argent = Argent + Benefices(no_produit)*X(no_produit);
 end
-fprintf(['Bénéfices : ' num2str(Argent,'%6.2f') '€\n']);
+fprintf(['Benefices : ' num2str(Argent,'%6.2f') '\n']);
 
 %% Responsable Atelier
-% On cherche ici à maximiser le nombre de pièces produites
+% On cherche ici a maximiser le nombre de pieces produites
 fprintf(['Nombre de produits : ' num2str(sum(X),'%6.2f') '\n']);
 
 %% Responsable des stocks
@@ -70,10 +70,10 @@ ut_stock=0;
 for no_produit=1:6
     ut_stock=ut_stock+f(no_produit)*X(no_produit);
 end
-fprintf(['Utilisation de l''espace de stockage : ' num2str(ut_stock,'%6.2f') ' unités\n']);
+fprintf(['Utilisation de l''espace de stockage : ' num2str(ut_stock,'%6.2f') ' unites\n']);
 
 %% Responsable commercial
-fprintf(['Différence de production A/E : ' num2str(abs(X(1)-X(5)),'%6.2f') '\n']);
+fprintf(['Difference de production A/E : ' num2str(abs(X(1)-X(5)),'%6.2f') '\n']);
 
 %% Responsable du personnel
 f=[2 10 5 4 13 7];
@@ -81,7 +81,7 @@ ut_mac_4=0;
 for no_produit=1:6
     ut_mac_4=ut_mac_4+f(no_produit)*X(no_produit);
 end
-fprintf(['Utilisation de la machine n°4 : ' num2str(ut_mac_4,'%6.2f') ' min\n']);
+fprintf(['Utilisation de la machine 4 : ' num2str(ut_mac_4,'%6.2f') ' min\n']);
 
 fprintf('----------------------------------------------------\n\n');
 end
