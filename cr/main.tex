@@ -296,6 +296,7 @@ Nous cherchons le point de mire, c'est-à-dire la situation idéale, mais non r�
 
 Nous prenons donc les extremas de chaque critère : maximum si le critère est à maximiser, minimum dans le cas inverse.
 Les extremas ont été calculés en partie 1 et sont rappelés ici :
+\label{optimum}
 \begin{itemize}
 \item Comptable : Bénéfice de 10410,62 unités maximum
 \item Atelier : Production de 378,64 produits maximum
@@ -345,15 +346,29 @@ Les autres critères sont considérés comme des contraintes et représentés pa
 $$ - n_A - n_B - n_C - n_D - n_E - n_F < x_1 $$
 $$ 5n_A + 5n_B + 6n_C + 10n_D + 5n_E + 4n_F < x_2 $$
 $$ 2n_A + 10n_B + 5n_C + 4n_D + 13n_E + 7n_F < x_3 $$
-$$ - n_A - n_B - n_C - n_D - n_E - n_F < x_4 $$ \todo{Equation fausse, Y COMPRIS DANS LE .M}
+$$ - n_A - n_B - n_C - n_D - n_E - n_F < x_4 $$ 
 
 On va faire varier $x_1$, $x_2$, et $x_3$ afin de trouver des solutions satisfaisantes, tout en prenant en compte les optimum. Il serait par exemple incohérent de considérer une production supérieure au maximum possible.
 
-\todo{Argumenter le choix des x1 ... x4 et justifier l'écart avec les optimums (#matriceDesGains)}
+Après plusieurs essais, nous en sommes arrivés aux valeurs suivantes :
+\begin{itemize}
+\item $x_1 = 350$, soit 350 produits fabriqués.
+\item $x_2 = 1680$, soit 1680 matières et produits en stock.
+\item $x_3 = 2508,8$, soit 2508,8 minutes d'utilisation de la machine 4.
+\end{itemize}
 
-\todo{Faire contre exemple avec une solution qui avantage la machine 4 mais fait trop peu de bénéf = pisse}
+Ainsi, le bénéfice serait de 7203,5.
 
-\todo{terminer cette partie}
+L'écart avec les optimums (voir page \pageref{optimum}, section \ref{optimum}) est raisonnable pour $x_1$ et $x_2$, ce qui est très satisfaisant. Il est élevé pour $x_3$, ce qui traduit un choix de notre part : nous avons voulu prioriser le bénéfice, puis la production quantitative et le stock. Nous avons accordé une importance assez faible à la contrainte d'utilisation de la machine 4.
+\\
+
+Lors de nos tests, nous avons constaté que, en considérant trop la contrainte de la machine 4, nous abaissions de manière drastique le bénéfice et les autres contraintes. Pour exemple, avec les contraintes suivantes :
+\begin{itemize}
+\item $x_1 = 240$, soit 240 produits fabriqués.
+\item $x_2 = 2300$, soit 2300 matières et produits en stock.
+\item $x_3 = 1000$, soit 1000 minutes d'utilisation de la machine 4.
+\end{itemize}
+Nous avions un bénéfice de 5275,6, alors que les autres contraintes ont également été dégradées de manière non négligeable. Ce choix n'était donc pas pertinent.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
